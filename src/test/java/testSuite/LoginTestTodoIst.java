@@ -1,5 +1,8 @@
 package testSuite;//package testSuite;
 
+import control.ControlSelenium;
+import org.openqa.selenium.By;
+import pages.AddTask;
 import pages.LoginSection;
 import pages.MainPage;
 import pages.MenuSection;
@@ -7,11 +10,14 @@ import io.qameta.allure.*;
 import org.junit.jupiter.api.*;
 import session.Session;
 
+import java.lang.module.Configuration;
+
 public class LoginTestTodoIst {
 
     LoginSection loginSection = new LoginSection();
     MainPage mainPage = new MainPage();
     MenuSection menuSection = new MenuSection();
+    AddTask addTask = new AddTask();
 
 
     @BeforeEach
@@ -45,5 +51,9 @@ public class LoginTestTodoIst {
         loginSection.btnLoginTodoIst.click();
         Assertions.assertTrue(menuSection.labelToday.isControlDisplayed(),
                 "Logout button is not displayed");
+        addTask.addTask.click();
+        addTask.setTask.setTextEnter("Test 1");
+        Assertions.assertTrue(addTask.getTask.isControlDisplayed(),
+                "Test 1 is not displayed");
     }
 }

@@ -1,8 +1,11 @@
 package control;
 
 import io.qameta.allure.Step;
+import org.junit.jupiter.api.Assertions;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import session.Session;
 
 public class ControlSelenium {
@@ -11,6 +14,7 @@ public class ControlSelenium {
     protected WebElement control;
     //
     protected String controlName;
+
 
     public ControlSelenium(By locator, String controlName){
 
@@ -42,5 +46,12 @@ public class ControlSelenium {
         this.allureStep("Is this control: " + controlName+" displayed? [" + isDisplayed + "]");
         return isDisplayed;
     }
+
+    public void verifyTest(String texto){
+        findControl();
+        control.getText();
+        this.allureStep("Get text on " + controlName);
+    }
+
 
 }
